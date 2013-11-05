@@ -67,6 +67,7 @@ if 'image' in args.plot or args.plot == 'all':
     ax = fig.add_subplot(224)
     image(ax)
 
+plt.tight_layout()
 if args.output:
     plt.savefig(args.output)
 else:
