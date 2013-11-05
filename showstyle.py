@@ -13,9 +13,7 @@ ap.add_argument('style', help='Which rc file to use.  One of %s' % available)
 ap.add_argument('--plot', default='all', help='One of [scatter, hist, line, image], or '
                 'a comma-separated list of a subset.  Default is all.')
 ap.add_argument('--output', required=False, help='Render the plot to a file')
-print "Here"
 args = ap.parse_args()
-print "Here"
 
 matplotlib.rc_file(os.path.join(HERE, 'rc', args.style))
 
