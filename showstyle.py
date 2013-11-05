@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 from matplotlib import pyplot as plt
 import matplotlib
@@ -12,6 +12,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('style', help='Which rc file to use.  One of %s' % available)
 ap.add_argument('--plot', default='all', help='One of [scatter, hist, line, image], or '
                 'a comma-separated list of a subset.  Default is all.')
+ap.add_argument('-o', '--output', required=False, help='Render the plot to a file')
 args = ap.parse_args()
 
 matplotlib.rc_file(os.path.join(HERE, 'rc', args.style))
@@ -45,29 +46,29 @@ def histogram(ax):
     ax.set_title('demo plot')
     ax.legend(loc='best')
 
+fig = plt.figure(figsize=(11, 8))
 
 def image(ax):
     ax.imshow(np.random.random((100, 100)))
 
-
 if 'line' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(221)
     lineplot(ax)
 
 if 'scatter' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(222)
     scatterplot(ax)
 
 if 'hist' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(223)
     histogram(ax)
 
 if 'image' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(224)
     image(ax)
 
-plt.show()
+plt.tight_layout()
+if args.output:
+    plt.savefig(args.output)
+else:
+    plt.show()
