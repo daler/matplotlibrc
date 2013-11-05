@@ -45,29 +45,25 @@ def histogram(ax):
     ax.set_title('demo plot')
     ax.legend(loc='best')
 
+fig = plt.figure(figsize=(11, 8))
 
 def image(ax):
     ax.imshow(np.random.random((100, 100)))
 
-
 if 'line' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(221)
     lineplot(ax)
 
 if 'scatter' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(222)
     scatterplot(ax)
 
 if 'hist' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(223)
     histogram(ax)
 
 if 'image' in args.plot or args.plot == 'all':
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    ax = fig.add_subplot(224)
     image(ax)
 
 plt.show()
