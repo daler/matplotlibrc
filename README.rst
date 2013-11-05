@@ -12,6 +12,11 @@ See the `showstyle.py` file for usage -- for example, note how `hist` and
 `scatter` grab the first color in `rcParams['axes.color_cycle']` since there's
 no way to set the default scatter or hist color via rcParams.
 
+See also
+--------
+* https://github.com/olgabot/prettyplotlib
+* https://github.com/mwaskom/seaborn 
+
 Screenshots
 -----------
 
